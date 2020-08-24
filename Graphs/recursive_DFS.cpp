@@ -24,26 +24,20 @@ class Graph {
 		}                               
 	}
 	
-	void DFS(int source) {
-		vector<bool> visited(v, false); // Maintain a vector to keep the track of the visited array
-		stack<int> s; //maintain a stack
+	void DFSUtil(int s, bool visited[]) {
+		visited[s] = true;
+		cout<<s<<" ";
 		
-		s.push(source);
-		
-		while(!s.empty()) {
-			source = s.top();
-			s.pop();
-			
-			if(!visited[source]) {
-				cout<<source<<" ";
-				visited[source] = true;
-			}
-			
-			for(auto i = graph[source].begin(); i != graph[source].end(); i++) {
-				if(!visited[*i]) s.push(*i);
-			}
+		for(auto i=graph[s].begin(); i!=graph[s].end(); i++) {
+			if(!visited[*i]) DFSUtil(*i, visited);
 		}
-		cout<<"\n";
+	}
+	
+	void DFS(int source) {
+		bool *visited = new bool[v];
+		for(int i=0;i<v;i++) visited[i] = false;  // Mark all the vertices as not visited
+		
+		DFSUtil(source, visited);
 	}
 };
 
@@ -62,6 +56,6 @@ int main() {
 
 
 /* Sample output
-0 3 2 1 4 
+4 1 0 2 3
 */
 
