@@ -27,5 +27,6 @@ int main() {
 }
 
 /* Sample output
-8    (Sum of the subarray from the index 1 to 4)
+8    (Sum of the subarray from the index 1 to 4)  
+Time complexity: O(n) where n is size of the array
 */
