@@ -1,3 +1,5 @@
+/* Problem Statement : https://codeforces.com/problemset/problem/268/A */
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -14,30 +16,26 @@ using namespace std;
 
 void solve(){
     // Solve here
-    string s;
-    cin>>s;
-    int l = s.length();
+    int n;
+    cin>>n;
 
-    string ans ="";
+    vector<pair<int, int>> v;
 
-    int i;
-    for(i=0;i+2<l;) {
-        if(i+2>l) {
+    for(int i=0;i<n;i++) {
+        int a,b;
+        cin>>a>>b;
 
-        }
-        if(s[i]=='W' and s[i+1] == 'U' and s[i+2] == 'B') {
-            if(i>0)ans += " ";
-            i+=3;
-        } else {
-            ans += s[i];
-            i++;
+        v.pb(mp(a,b));
+    }
+
+    int ans = 0;
+    for(auto i:v) {
+        for(auto j:v) {
+            if(i.first == j.second) ans++;
         }
     }
 
-    for(int j = i;j<l;j++) {
-        ans += s[j];
-    }
-    cout<<ans<<endl;
+    cout<<ans;
 }
 
 int32_t main() {

@@ -1,3 +1,5 @@
+/* Problem Statement : https://codeforces.com/problemset/problem/69/A */
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -14,30 +16,19 @@ using namespace std;
 
 void solve(){
     // Solve here
-    string s;
-    cin>>s;
-    int l = s.length();
-
-    string ans ="";
-
-    int i;
-    for(i=0;i+2<l;) {
-        if(i+2>l) {
-
-        }
-        if(s[i]=='W' and s[i+1] == 'U' and s[i+2] == 'B') {
-            if(i>0)ans += " ";
-            i+=3;
-        } else {
-            ans += s[i];
-            i++;
-        }
+    int n;
+    cin>>n;
+    int s_a = 0, s_b=0, s_c=0;
+    
+    for(int i=0;i<n;i++) {
+        int a, b, c;
+        cin>>a>>b>>c;
+        s_a += a;
+        s_b += b;
+        s_c += c;
     }
-
-    for(int j = i;j<l;j++) {
-        ans += s[j];
-    }
-    cout<<ans<<endl;
+    if(s_a == 0 and s_b==0 and s_c==0) cout<<"YES";
+    else cout<<"NO";
 }
 
 int32_t main() {

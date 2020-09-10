@@ -1,3 +1,5 @@
+/* Problem Statement : https://codeforces.com/problemset/problem/337/A */
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -14,30 +16,20 @@ using namespace std;
 
 void solve(){
     // Solve here
-    string s;
-    cin>>s;
-    int l = s.length();
+    int n, m;
+    cin>>n>>m;
 
-    string ans ="";
+    int arr[m];
+    for(int i=0;i<m;i++) cin>>arr[i];
 
-    int i;
-    for(i=0;i+2<l;) {
-        if(i+2>l) {
+    sort(arr, arr+m);
+    int best = INT_MAX;
 
-        }
-        if(s[i]=='W' and s[i+1] == 'U' and s[i+2] == 'B') {
-            if(i>0)ans += " ";
-            i+=3;
-        } else {
-            ans += s[i];
-            i++;
-        }
+    for(int i=0;i<(m-n+1);i++) {
+        best = min(best, abs(arr[i]-arr[i+n-1]));
     }
 
-    for(int j = i;j<l;j++) {
-        ans += s[j];
-    }
-    cout<<ans<<endl;
+    cout<<(best==INT_MAX?0:best);
 }
 
 int32_t main() {
